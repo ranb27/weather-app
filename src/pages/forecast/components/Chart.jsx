@@ -7,7 +7,7 @@ export default function ChartForecast({ weather, theme }) {
     chart: {
       id: "area-chart",
       type: "area",
-      foreColor: theme === "emerald" ? "#333" : "#fff",
+      foreColor: theme === "dim" ? "#fff" : "#333",
     },
     dataLabels: {
       enabled: false,
