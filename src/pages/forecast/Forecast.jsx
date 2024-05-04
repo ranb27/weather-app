@@ -4,12 +4,16 @@ import loading1 from "../../assets/loading-weather.gif";
 import loading2 from "../../assets/loading2-weather.gif";
 import loading3 from "../../assets/loading3-weather.gif";
 import axios from "axios";
+import { useSnackbar, closeSnackbar } from "notistack";
 
 //! Components
 import Chart from "./components/Chart";
 import Input from "./components/Input";
 
 function Forecast({ theme }) {
+  // Snackbar
+  const { enqueueSnackbar, closeSnackbar } = useSnackbar();
+
   //! State
   //? Loading
   const [loading, setLoading] = useState(false);
@@ -62,9 +66,17 @@ function Forecast({ theme }) {
       })
       .finally(() => {
         setLoading(false);
+        enqueueSnackbar("Weather Data", {
+          variant: "success",
+          autoHideDuration: 1000,
+        });
       })
       .catch((err) => {
         console.error(err);
+        enqueueSnackbar("Error to fetching data", {
+          variant: "error",
+          autoHideDuration: 2000,
+        });
       });
   };
 
