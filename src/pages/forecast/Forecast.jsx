@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import forcast from "../../assets/forecast.png";
-import loading from "../../assets/loading-weather.gif";
+import loading1 from "../../assets/loading-weather.gif";
 import loading2 from "../../assets/loading2-weather.gif";
 import loading3 from "../../assets/loading3-weather.gif";
 import axios from "axios";
@@ -124,12 +124,12 @@ function Forecast({ theme }) {
       </div>
       {loading ? (
         <>
-          <div className="flex justify-center items-center h-[50vh]">
+          <div className="flex justify-center items-center h-[70vh]">
             <img
               src={loading2}
               alt="loading"
               style={{ width: "128px" }}
-              className="rounded-full"
+              className="rounded-full border-2 border-info"
             />
           </div>
         </>
@@ -149,7 +149,23 @@ function Forecast({ theme }) {
               </span>
             </p>
           </div>
-          <Chart weather={weather} theme={theme} />
+          {weather.current.time ? (
+            <div className="mb-8">
+              <Chart weather={weather} theme={theme} />
+            </div>
+          ) : (
+            <div className="flex flex-col gap-2 justify-center items-center h-[50vh]">
+              <img
+                src={loading1}
+                alt="loading"
+                style={{ width: "128px" }}
+                className="rounded-full border-2 border-info"
+              />
+              <p className="title">
+                Please searching for weather forecast data...
+              </p>
+            </div>
+          )}
         </>
       )}
     </div>

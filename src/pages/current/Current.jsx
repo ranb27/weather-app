@@ -134,12 +134,12 @@ export default function Current() {
         </button>
       </div>
       {loading ? (
-        <div className="flex justify-center items-center h-[50vh]">
+        <div className="flex justify-center items-center h-[70vh]">
           <img
             src={loading2}
             alt="loading"
             style={{ width: "128px" }}
-            className="rounded-full"
+            className="rounded-full border-2 border-info"
           />
         </div>
       ) : (
@@ -149,7 +149,7 @@ export default function Current() {
             {weather.current.time !== "" ? (
               <>
                 <h2 className="font-bold text-center">Weather Condition</h2>
-                <div className="grid grid-cols-3 gap-4 mx-2">
+                <div className="grid grid-cols-3 gap-2 mx-2">
                   <div
                     className={`${
                       weather.current.temperature_2m < 20
